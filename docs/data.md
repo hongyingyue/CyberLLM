@@ -13,11 +13,14 @@ Reasoning
 ## Data synthethsize
 - [alpaca](https://github.com/tatsu-lab/stanford_alpaca)
 - [promptsource](https://github.com/bigscience-workshop/promptsource)
+- [wizardLM]
 
 
 ## Data quality
+
 - reward model 
-- 
+- topic classification
+
 
 ## Data filtering (Non-targeted)
 - [IFD](https://arxiv.org/abs/2308.12032)

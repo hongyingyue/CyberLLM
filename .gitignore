@@ -82,6 +82,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
+/reference
 *.log
 *.parquet
 *.csv
