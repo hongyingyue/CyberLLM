@@ -255,24 +255,6 @@ def find_all_linear_names(model: PreTrainedModel, linear_type: Optional[object] 
     return list(lora_module_names)
 
 
-# @dataclass
-# class DataCollatorForSupervisedDataset(object):
-#     """Collate examples for supervised fine-tuning."""
-
-#     tokenizer: transformers.PreTrainedTokenizer
-
-#     def __call__(self, instances):
-#         input_ids = [instance['input_ids'] for instance in instances]
-#         labels = [instance['labels'] for instance in instances]
-#         input_ids = torch.nn.utils.rnn.pad_sequence(input_ids, batch_first=True, padding_value=self.tokenizer.pad_token_id)
-#         labels = torch.nn.utils.rnn.pad_sequence(labels, batch_first=True, padding_value=IGNORE_INDEX)
-#         return dict(
-#             input_ids=input_ids,
-#             labels=labels,
-#             attention_mask=input_ids.ne(self.tokenizer.pad_token_id),
-#         )
-
-
 @dataclass
 class DataCollatorForSupervisedDataset(object):
     """Collate examples for supervised fine-tuning."""
@@ -290,14 +272,6 @@ class DataCollatorForSupervisedDataset(object):
             labels=labels,
             attention_mask=input_ids.ne(self.tokenizer.pad_token_id),
         )
-
-
-class CustomTrainer(Trainer):
-    def compute_loss(self, model, inputs, return_outputs=False):
-        labels = inputs.pop("labels")
-        outputs = model(**inputs)
-        loss = outputs.loss  # Assumes model returns loss
-        return (loss, outputs) if return_outputs else loss
 
 
 def get_optimizer_grouped_parameters(
