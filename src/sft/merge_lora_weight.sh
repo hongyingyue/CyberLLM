@@ -1,0 +1,1 @@
+python3 merge_lora_weight.py --base_model_path
